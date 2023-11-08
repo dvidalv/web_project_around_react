@@ -1,0 +1,8 @@
+.add-button {
+  height: 50px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+.add-button:hover {
+  opacity: 0.6;
+}

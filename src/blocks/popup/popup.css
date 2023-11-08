@@ -1,0 +1,55 @@
+.popup {
+  position: fixed;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  font-style: normal;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  overflow: hidden;
+}
+
+.popup__formDeleteCard {
+  background-color: red;
+}
+.popup-animation {
+  animation: zoomIn 0.5s ease-in-out;
+}
+.popup-cierre {
+  transition: opacity 1s ease;
+  opacity: 0;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -ms-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.popup_opened {
+  display: flex;
+}
+
+.invisible {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .popup__form {
+    max-width: 430px;
+  }
+}
