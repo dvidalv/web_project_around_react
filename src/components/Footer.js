@@ -1,7 +1,7 @@
 function Footer() {
 	return (
-		<footer class="footer">
-			<p class="footer__title">&copy; 2023. David V. Vidal V.</p>
+		<footer className="footer">
+			<p className="footer__title">&copy; 2023. David V. Vidal V.</p>
 		</footer>
 	);
 }
