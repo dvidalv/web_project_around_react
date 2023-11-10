@@ -58,6 +58,38 @@ function Main({
 						value="Guardar"
 					/>
 				</PopupWithForm>
+				<PopupWithForm
+					name={'element'}
+					title={'Nueva Imagen'}
+					isOpen={isAddPlacePopupOpen}
+					onClose={onAddPlace}
+				>
+				<input
+							id="nombre-input"
+							className="popup__input popup__input_nombre"
+							type="text"
+							placeholder="Nombre"
+							minLength="2"
+							maxLength="40"
+							required
+							name="name"
+						/>
+						<input
+							id="aboutMe-input"
+							className="popup__input popup__input_about-me"
+							type="text"
+							placeholder="Acerca de mi"
+							minLength="2"
+							maxLength="200"
+							required
+							name="about"
+						/>
+						<input
+							className="popup__submit popup__submit_perfil"
+							type="submit"
+							value="Guardar"
+						/>
+				</PopupWithForm>
 				{/* <section className="popup popup_perfil">
 					<form
 						className="popup__form popup__formPerfil"

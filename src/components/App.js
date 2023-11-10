@@ -21,7 +21,7 @@ function App() {
 	};
 
 	const handleAddPlaceClick = () => {
-		setIsAddPlacePopupOpen(true);
+		setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
 	};
 	return (
 		<div className="page">
