@@ -120,6 +120,7 @@ function Main({
 						<div className="profile__overlay">
 							<img
 								onClick={onEditAvatar}
+								onClick={onEditAvatar}
 								className="profile__edit-icon"
 								src={editPerfil}
 								alt="icon edit"
@@ -135,6 +136,11 @@ function Main({
 								type="button"
 								className="edit-button"
 							>
+							<button
+								onClick={onEditPerfil}
+								type="button"
+								className="edit-button"
+							>
 								<img src={editButton} alt="edit button" />
 							</button>
 						</div>
@@ -144,6 +150,7 @@ function Main({
 
 				<div className="profile__button">
 					<img
+						onClick={onAddPlace}
 						onClick={onAddPlace}
 						className="add-button"
 						src={addButton}
@@ -179,6 +186,7 @@ function Main({
 						<img
 							className="btnCerrar popup__button-cerrar-places"
 							src={CloseIcon}
+							src={CloseIcon}
 							alt="icon cerrar"
 						/>
 						<h2 className="popup__title">Estas seguro?</h2>
@@ -190,6 +198,7 @@ function Main({
 					</form>
 				</section>
 			</section>
+			<ImagePopup />
 			<ImagePopup />
 		</main>
 	);
