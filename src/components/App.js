@@ -2,7 +2,6 @@ import Header from './Header';
 import Footer from './Footer';
 import Main from './main';
 import { useState } from 'react';
-import { useState } from 'react';
 
 function App() {
 	const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
