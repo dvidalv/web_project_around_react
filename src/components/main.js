@@ -5,6 +5,9 @@ import addButton from '../images/Add-Button.svg';
 import profile from '../images/profile.jpg';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
+import Api from '../utils/api';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 function Main({
 	onEditPerfil,
@@ -17,6 +20,22 @@ function Main({
 }) {
 	// Aquí puedes manejar el estado de apertura/cierre de las ventanas emergentes
 	// const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+	const [userName, setUserName] = useState();
+	const [userDescription, setUserDescription] = useState('');
+	const [userAvatar, setUserAvatar] = useState('');
+
+
+	useEffect(() => {
+		Api.getUserInfo('users/me')
+			.then((userData) => {
+				setUserName(userData.name);
+				setUserDescription(userData.about);
+				setUserAvatar(userData.avatar);
+			})
+			.catch((err) => console.log(err));
+	}, []);
+
+
 	return (
 		<main className="content">
 			<section className="profile">
@@ -114,7 +133,7 @@ function Main({
 					<div className="profile__avatar">
 						<img
 							className="profile__imagen"
-							src={profile}
+							src={userAvatar}
 							alt="Imagen de perfil"
 						/>
 						<div className="profile__overlay">
@@ -129,7 +148,7 @@ function Main({
 
 					<div className="profile__info">
 						<div className="profile__contenedor-titulo">
-							<h1 className="profile__title">David Vidal</h1>
+							<h1 className="profile__title">{userName}</h1>
 							<button
 								onClick={onEditPerfil}
 								type="button"
@@ -143,7 +162,7 @@ function Main({
 								<img src={editButton} alt="edit button" />
 							</button>
 						</div>
-						<p className="profile__subtitle">Desarrollador Web</p>
+						<p className="profile__subtitle">{userDescription}</p>
 					</div>
 				</div>
 
