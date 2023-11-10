@@ -4,7 +4,6 @@ import editPerfil from '../images/editPerfil.svg';
 import addButton from '../images/Add-Button.svg';
 import profile from '../images/profile.jpg';
 import PopupWithForm from './PopupWithForm';
-// import React, { useState } from 'react';
 import ImagePopup from './ImagePopup';
 
 function Main({
@@ -13,7 +12,8 @@ function Main({
 	onAddPlace,
 	isEditProfilePopupOpen,
 	isEditAvatarPopupOpen,
-	isAddPlacePopupOpen
+	isAddPlacePopupOpen,
+	closeAllPopups,
 }) {
 	// Aquí puedes manejar el estado de apertura/cierre de las ventanas emergentes
 	// const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -24,7 +24,7 @@ function Main({
 					name="perfil"
 					title="Editar Perfil"
 					isOpen={isEditProfilePopupOpen}
-					onClose={onEditPerfil}
+					onClose={closeAllPopups}
 				>
 					<img
 						className="btnCerrar popup__button-cerrar-perfil"
@@ -62,79 +62,40 @@ function Main({
 					name={'element'}
 					title={'Nueva Imagen'}
 					isOpen={isAddPlacePopupOpen}
-					onClose={onAddPlace}
+					onClose={closeAllPopups}
 				>
-				<input
-							id="nombre-input"
-							className="popup__input popup__input_nombre"
-							type="text"
-							placeholder="Nombre"
-							minLength="2"
-							maxLength="40"
-							required
-							name="name"
-						/>
-						<input
-							id="aboutMe-input"
-							className="popup__input popup__input_about-me"
-							type="text"
-							placeholder="Acerca de mi"
-							minLength="2"
-							maxLength="200"
-							required
-							name="about"
-						/>
-						<input
-							className="popup__submit popup__submit_perfil"
-							type="submit"
-							value="Guardar"
-						/>
+					<input
+						id="nombre-input"
+						className="popup__input popup__input_nombre"
+						type="text"
+						placeholder="Nombre"
+						minLength="2"
+						maxLength="40"
+						required
+						name="name"
+					/>
+					<input
+						id="aboutMe-input"
+						className="popup__input popup__input_about-me"
+						type="text"
+						placeholder="Acerca de mi"
+						minLength="2"
+						maxLength="200"
+						required
+						name="about"
+					/>
+					<input
+						className="popup__submit popup__submit_perfil"
+						type="submit"
+						value="Guardar"
+					/>
 				</PopupWithForm>
-				{/* <section className="popup popup_perfil">
-					<form
-						className="popup__form popup__formPerfil"
-						name="form"
-						id="form"
-						noValidate
-					>
-						<img
-							className="btnCerrar popup__button-cerrar-perfil"
-							src={CloseIcon}
-							alt="icon cerrar"
-						/>
-						<h2 className="popup__title">Editar Perfil</h2>
-						<input
-							id="nombre-input"
-							className="popup__input popup__input_nombre"
-							type="text"
-							placeholder="Nombre"
-							minLength="2"
-							maxLength="40"
-							required
-							name="name"
-						/>
-						<input
-							id="aboutMe-input"
-							className="popup__input popup__input_about-me"
-							type="text"
-							placeholder="Acerca de mi"
-							minLength="2"
-							maxLength="200"
-							required
-							name="about"
-						/>
-						<input
-							className="popup__submit popup__submit_perfil"
-							type="submit"
-							value="Guardar"
-						/>
-					</form>
-				</section> */}
+
 				<PopupWithForm
 					name="avatar"
 					title="Cambiar foto de perfil"
 					isOpen={isEditAvatarPopupOpen}
-					onClose={onEditAvatar}
+					onClose={closeAllPopups}
 				>
 					<input
 						className="popup__input popup__input-link"
@@ -192,40 +153,6 @@ function Main({
 			</section>
 
 			<section>
-				{/* <section className="popup popup_Element">
-					<form className="popup__form popup__formElement" noValidate>
-						<img
-							className="btnCerrar popup__button-cerrar-places"
-							src={CloseIcon}
-							alt="icon cerrar"
-						/>
-						<h2 className="popup__title">Nuevo lugar</h2>
-						<input
-							id="titulo-input"
-							className="popup__input popup__input-titulo"
-							type="text"
-							placeholder="Titulo"
-							minLength="2"
-							maxLength="30"
-							required
-							name="name"
-						/>
-						<input
-							id="url-input"
-							className="popup__input popup__input-link"
-							type="url"
-							placeholder="Enlace a la Imagen"
-							required
-							name="link"
-						/>
-						<input
-							className="popup__submit popup__submit_Element"
-							type="submit"
-							value="Nuevo"
-						/>
-					</form>
-				</section> */}
-
 				<ul className="elements"></ul>
 
 				<template className="template-card">

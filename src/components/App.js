@@ -1,6 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
-import Main from './main';
+import Main from './Main';
 import { useState } from 'react';
 
 function App() {
@@ -8,31 +8,36 @@ function App() {
 	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
-  
 	const handleEditAvatarClick = () => {
-    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
-    console.log(isEditAvatarPopupOpen)
-    
+		setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+		console.log(isEditAvatarPopupOpen);
 	};
 
 	const handleEditPerfilClick = () => {
 		setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
-
 	};
 
 	const handleAddPlaceClick = () => {
 		setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
 	};
+
+	const closeAllPopups = () => {
+		setIsEditProfilePopupOpen(false);
+		setIsAddPlacePopupOpen(false);
+		setIsEditAvatarPopupOpen(false);
+	};
+
 	return (
 		<div className="page">
 			<Header />
 			<Main
+				closeAllPopups={closeAllPopups}
 				onEditPerfil={handleEditPerfilClick}
 				onEditAvatar={handleEditAvatarClick}
 				onAddPlace={handleAddPlaceClick}
-        isEditProfilePopupOpen={isEditProfilePopupOpen}
-        isEditAvatarPopupOpen={isEditAvatarPopupOpen}
-        isAddPlacePopupOpen={isAddPlacePopupOpen}
+				isEditProfilePopupOpen={isEditProfilePopupOpen}
+				isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+				isAddPlacePopupOpen={isAddPlacePopupOpen}
 			/>
 			<Footer />
 		</div>
