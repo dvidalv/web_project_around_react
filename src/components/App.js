@@ -8,13 +8,16 @@ function App() {
 	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 
+  
 	const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+    console.log(isEditAvatarPopupOpen)
+    
 	};
 
-
 	const handleEditPerfilClick = () => {
-		setIsEditProfilePopupOpen(true);
+		setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+
 	};
 
 	const handleAddPlaceClick = () => {
@@ -24,12 +27,12 @@ function App() {
 		<div className="page">
 			<Header />
 			<Main
-				onEditAvatar={handleEditAvatarClick}
 				onEditPerfil={handleEditPerfilClick}
+				onEditAvatar={handleEditAvatarClick}
 				onAddPlace={handleAddPlaceClick}
         isEditProfilePopupOpen={isEditProfilePopupOpen}
-        isAddPlacePopupOpen={isAddPlacePopupOpen}
         isEditAvatarPopupOpen={isEditAvatarPopupOpen}
+        isAddPlacePopupOpen={isAddPlacePopupOpen}
 			/>
 			<Footer />
 		</div>

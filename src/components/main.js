@@ -8,17 +8,57 @@ import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 
 function Main({
-	onEditAvatar,
 	onEditPerfil,
+	onEditAvatar,
 	onAddPlace,
+	isEditProfilePopupOpen,
 	isEditAvatarPopupOpen,
+	isAddPlacePopupOpen
 }) {
 	// Aquí puedes manejar el estado de apertura/cierre de las ventanas emergentes
 	// const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 	return (
 		<main className="content">
 			<section className="profile">
-				<section className="popup popup_perfil">
+				<PopupWithForm
+					name="perfil"
+					title="Editar Perfil"
+					isOpen={isEditProfilePopupOpen}
+					onClose={onEditPerfil}
+				>
+					<img
+						className="btnCerrar popup__button-cerrar-perfil"
+						src={CloseIcon}
+						alt="icon cerrar"
+						onClick={onEditPerfil}
+					/>
+					<input
+						id="nombre-input"
+						className="popup__input popup__input_nombre"
+						type="text"
+						placeholder="Nombre"
+						minLength="2"
+						maxLength="40"
+						required
+						name="name"
+					/>
+					<input
+						id="aboutMe-input"
+						className="popup__input popup__input_about-me"
+						type="text"
+						placeholder="Acerca de mi"
+						minLength="2"
+						maxLength="200"
+						required
+						name="about"
+					/>
+					<input
+						className="popup__submit popup__submit_perfil"
+						type="submit"
+						value="Guardar"
+					/>
+				</PopupWithForm>
+				{/* <section className="popup popup_perfil">
 					<form
 						className="popup__form popup__formPerfil"
 						name="form"
@@ -57,9 +97,9 @@ function Main({
 							value="Guardar"
 						/>
 					</form>
-				</section>
+				</section> */}
 				<PopupWithForm
-					name="profile"
+					name="avatar"
 					title="Cambiar foto de perfil"
 					isOpen={isEditAvatarPopupOpen}
 					onClose={onEditAvatar}
@@ -120,7 +160,7 @@ function Main({
 			</section>
 
 			<section>
-				<section className="popup popup_Element">
+				{/* <section className="popup popup_Element">
 					<form className="popup__form popup__formElement" noValidate>
 						<img
 							className="btnCerrar popup__button-cerrar-places"
@@ -152,7 +192,7 @@ function Main({
 							value="Nuevo"
 						/>
 					</form>
-				</section>
+				</section> */}
 
 				<ul className="elements"></ul>
 
