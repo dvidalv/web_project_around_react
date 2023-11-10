@@ -2,22 +2,19 @@ import CloseIcon from '../images/Close-Icon.svg';
 import editButton from '../images/Edit-Button.svg';
 import editPerfil from '../images/editPerfil.svg';
 import addButton from '../images/Add-Button.svg';
-import closeIcon from '../images/Close-Icon.svg';
 import profile from '../images/profile.jpg';
-function Main() {
-	function handleEditAvatarClick() {
-		const popupAvatar = document.querySelector('.popup_update-perfil');
-		popupAvatar.classList.add('popup_opened');
-	}
-	function handleEditPerfilClick() {
-		// console.log('¡No hagas clic en mi!');
-		const popupPerfil = document.querySelector('.popup_perfil');
-		popupPerfil.classList.add('popup_opened');
-	}
-	function handleAddPlaceClick() {
-		const popupAdd = document.querySelector('.popup_Element');
-		popupAdd.classList.add('popup_opened');
-	}
+import PopupWithForm from './PopupWithForm';
+// import React, { useState } from 'react';
+import ImagePopup from './ImagePopup';
+
+function Main({
+	onEditAvatar,
+	onEditPerfil,
+	onAddPlace,
+	isEditAvatarPopupOpen,
+}) {
+	// Aquí puedes manejar el estado de apertura/cierre de las ventanas emergentes
+	// const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 	return (
 		<main className="content">
 			<section className="profile">
@@ -26,7 +23,7 @@ function Main() {
 						className="popup__form popup__formPerfil"
 						name="form"
 						id="form"
-						novalidate
+						noValidate
 					>
 						<img
 							className="btnCerrar popup__button-cerrar-perfil"
@@ -39,8 +36,8 @@ function Main() {
 							className="popup__input popup__input_nombre"
 							type="text"
 							placeholder="Nombre"
-							minlength="2"
-							maxlength="40"
+							minLength="2"
+							maxLength="40"
 							required
 							name="name"
 						/>
@@ -49,8 +46,8 @@ function Main() {
 							className="popup__input popup__input_about-me"
 							type="text"
 							placeholder="Acerca de mi"
-							minlength="2"
-							maxlength="200"
+							minLength="2"
+							maxLength="200"
 							required
 							name="about"
 						/>
@@ -61,29 +58,25 @@ function Main() {
 						/>
 					</form>
 				</section>
-				<section className="popup popup_update-perfil">
-					<form className="popup__form popup__form-update-perfil" novalidate>
-						<img
-							className="btnCerrar popup__button-cerrar-update-perfil"
-							src={CloseIcon}
-							alt="icon cerrar"
-						/>
-						<h2 className="popup__title">Cambiar foto de perfil</h2>
-						<input
-							className="popup__input popup__input-link"
-							type="url"
-							placeholder="Enlace a la Imagen"
-							required
-							name="link"
-						/>
-						<input
-							className="popup__submit popup__submit_update-perfil"
-							type="submit"
-							value="Guardar"
-						/>
-					</form>
-				</section>
-
+				<PopupWithForm
+					name="profile"
+					title="Cambiar foto de perfil"
+					isOpen={isEditAvatarPopupOpen}
+					onClose={onEditAvatar}
+				>
+					<input
+						className="popup__input popup__input-link"
+						type="url"
+						placeholder="Enlace a la Imagen"
+						required
+						name="link"
+					/>
+					<input
+						className="popup__submit popup__submit_update-perfil"
+						type="submit"
+						value="Guardar"
+					/>
+				</PopupWithForm>
 				<div className="profile__data">
 					<div className="profile__avatar">
 						<img
@@ -93,7 +86,7 @@ function Main() {
 						/>
 						<div className="profile__overlay">
 							<img
-								onClick={handleEditAvatarClick}
+								onClick={onEditAvatar}
 								className="profile__edit-icon"
 								src={editPerfil}
 								alt="icon edit"
@@ -104,7 +97,11 @@ function Main() {
 					<div className="profile__info">
 						<div className="profile__contenedor-titulo">
 							<h1 className="profile__title">David Vidal</h1>
-							<button onClick={handleEditPerfilClick} type="button" className="edit-button">
+							<button
+								onClick={onEditPerfil}
+								type="button"
+								className="edit-button"
+							>
 								<img src={editButton} alt="edit button" />
 							</button>
 						</div>
@@ -114,7 +111,7 @@ function Main() {
 
 				<div className="profile__button">
 					<img
-						onClick={handleAddPlaceClick}
+						onClick={onAddPlace}
 						className="add-button"
 						src={addButton}
 						alt="icono boton agregar"
@@ -124,10 +121,10 @@ function Main() {
 
 			<section>
 				<section className="popup popup_Element">
-					<form className="popup__form popup__formElement" novalidate>
+					<form className="popup__form popup__formElement" noValidate>
 						<img
 							className="btnCerrar popup__button-cerrar-places"
-							src={closeIcon}
+							src={CloseIcon}
 							alt="icon cerrar"
 						/>
 						<h2 className="popup__title">Nuevo lugar</h2>
@@ -136,8 +133,8 @@ function Main() {
 							className="popup__input popup__input-titulo"
 							type="text"
 							placeholder="Titulo"
-							minlength="2"
-							maxlength="30"
+							minLength="2"
+							maxLength="30"
 							required
 							name="name"
 						/>
@@ -182,7 +179,7 @@ function Main() {
 					>
 						<img
 							className="btnCerrar popup__button-cerrar-places"
-							src={closeIcon}
+							src={CloseIcon}
 							alt="icon cerrar"
 						/>
 						<h2 className="popup__title">Estas seguro?</h2>
@@ -194,9 +191,7 @@ function Main() {
 					</form>
 				</section>
 			</section>
-			<div className="popup overlay-image">
-				<div className="overlay-image__container"></div>
-			</div>
+			<ImagePopup />
 		</main>
 	);
 }
