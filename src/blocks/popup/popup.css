@@ -14,6 +14,10 @@
   background-color: rgba(0, 0, 0, 0.5);
   display: none;
   overflow: hidden;
+  transition: opacity 0.3s ease-in-out;
+  /*opacity: 0;
+  */animation: FadeOut 0.3s ease-in-out forwards;
+  -webkit-animation: FadeOut 0.3s ease-in-out forwards;
 }
 
 .popup__formDeleteCard {
@@ -41,7 +45,11 @@
 }
 
 .popup_opened {
-  display: flex;
+  /*transition: opacity 0.3s ease-in-out;
+  */display: flex;
+  /*opacity: 1;
+  */animation: FadeIn 0.3s ease-in-out forwards;
+  -webkit-animation: FadeIn 0.3s ease-in-out forwards;
 }
 
 .invisible {
@@ -55,4 +63,8 @@
 }
 .popup__image{
   width: 75vw;
+}
+.popup_closing {
+  animation: FadeOut 0.3s ease-in-out forwards;
+  -webkit-animation: FadeOut 0.3s ease-in-out forwards;
 }

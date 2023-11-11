@@ -11,6 +11,7 @@ function App() {
 
 	const handleCardClick = (card) => {
 		document.body.style.overflow = 'hidden';
+		
 		setSelectedCard(card);
 	};
 
