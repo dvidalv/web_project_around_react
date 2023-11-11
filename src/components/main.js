@@ -2,7 +2,6 @@ import CloseIcon from '../images/Close-Icon.svg';
 import editButton from '../images/Edit-Button.svg';
 import editPerfil from '../images/editPerfil.svg';
 import addButton from '../images/Add-Button.svg';
-// import profile from '../images/profile.jpg';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import Api from '../utils/api';
@@ -20,11 +19,10 @@ function Main({
 	closeAllPopups,
 	onCardClick,
 	selectedCard,
-	closePopupImage
-	
+	closePopupImage,
+	onDeleteClick,
+	isDeletePopupOpen
 }) {
-	// Aquí puedes manejar el estado de apertura/cierre de las ventanas emergentes
-	// const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 	const [userName, setUserName] = useState('');
 	const [userDescription, setUserDescription] = useState('');
 	const [userAvatar, setUserAvatar] = useState('');
@@ -200,52 +198,20 @@ function Main({
 					{cards.map((card) => (
 						<Card
 							key={card._id}
-							name={card.name}
-							link={card.link}
-							likes={card.likes.length}
-							id={card._id}
-							userId={card.owner._id}
 							onCardClick={onCardClick}
 							card={card}
+							onDeleteClick={onDeleteClick}
 						/>
 					))}
 				</ul>
-
-				<template className="template-card">
-					<li className="card">
-						<div className="card__image-container">
-							<img className="card__imagen" src=" " alt=" " />
-						</div>
-						<div className="card__contenido">
-							<div className="card__info">
-								<p className="card__title"></p>
-								<div className="card_dislike"></div>
-							</div>
-							<span className="card__likes card__like-counter">1</span>
-						</div>
-						<i className="fa-solid fa-trash card__trash"></i>
-					</li>
-				</template>
-
-				<section className="popup popup_delete-card">
-					<form
-						name="delete-card"
-						className="popup__form popup__formDeleteCard"
-					>
-						<img
-							className="btnCerrar popup__button-cerrar-places"
-							src={CloseIcon}
-							alt="icon cerrar"
-						/>
-						<h2 className="popup__title">Estas seguro?</h2>
-						<input
-							className="popup__submit popup__submit_deleteCard"
-							type="submit"
-							value="Si"
-						/>
-					</form>
-				</section>
 			</section>
+			<PopupWithForm title={'Estas Seguro?'} isOpen={isDeletePopupOpen} onClose={closeAllPopups}>
+					<input
+						className="popup__submit popup__submit_deleteCard"
+						type="submit"
+						value="Si"
+					/>
+			</PopupWithForm>
 			<ImagePopup card={selectedCard} onClose={closePopupImage} />
 		</main>
 	);

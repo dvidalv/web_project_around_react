@@ -1,6 +1,6 @@
 import Header from './Header';
 import Footer from './Footer';
-import Main from './main';
+import Main from './Main';
 import { useState } from 'react';
 
 function App() {
@@ -8,10 +8,15 @@ function App() {
 	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 	const [selectedCard, setSelectedCard] = useState(null);
+	const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false)
+
+
+	const handleDeleteClick = () => {
+		setIsDeletePopupOpen(!isDeletePopupOpen);
+	}
 
 	const handleCardClick = (card) => {
 		document.body.style.overflow = 'hidden';
-		
 		setSelectedCard(card);
 	};
 
@@ -34,12 +39,14 @@ function App() {
 		setIsAddPlacePopupOpen(false);
 		setIsEditAvatarPopupOpen(false);
 		setSelectedCard(null);
+		setIsDeletePopupOpen(false);
 	};
 
 	return (
 		<div className="page">
 			<Header />
 			<Main
+				onDeleteClick={handleDeleteClick}
 				closeAllPopups={closeAllPopups}
 				onEditPerfil={handleEditPerfilClick}
 				onEditAvatar={handleEditAvatarClick}
@@ -50,6 +57,7 @@ function App() {
 				onCardClick={handleCardClick}
 				closePopupImage={closeAllPopups}
 				selectedCard={selectedCard}
+				isDeletePopupOpen={isDeletePopupOpen}
 			/>
 			<Footer />
 		</div>

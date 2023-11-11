@@ -1,4 +1,4 @@
-function Card({onCardClick, card}) {
+function Card({onCardClick, card, onDeleteClick}) {
 	return (
 		<li className="card">
 						<div className="card__image-container">
@@ -11,7 +11,7 @@ function Card({onCardClick, card}) {
 							</div>
 							<span className="card__likes card__like-counter">{card.likes.length}</span>
 						</div>
-						<i className="fa-solid fa-trash card__trash"></i>
+						<i onClick={onDeleteClick} className="fa-solid fa-trash card__trash"></i>
 					</li>
 	)
 }
