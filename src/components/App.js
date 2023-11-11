@@ -7,10 +7,16 @@ function App() {
 	const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
 	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+	const [selectedCard, setSelectedCard] = useState(null);
+
+	const handleCardClick = (card) => {
+		document.body.style.overflow = 'hidden';
+		setSelectedCard(card);
+	};
 
 	const handleEditAvatarClick = () => {
 		setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
-		console.log(isEditAvatarPopupOpen);
+
 	};
 
 	const handleEditPerfilClick = () => {
@@ -22,9 +28,11 @@ function App() {
 	};
 
 	const closeAllPopups = () => {
+		document.body.style.overflow = 'auto';
 		setIsEditProfilePopupOpen(false);
 		setIsAddPlacePopupOpen(false);
 		setIsEditAvatarPopupOpen(false);
+		setSelectedCard(null);
 	};
 
 	return (
@@ -38,6 +46,9 @@ function App() {
 				isEditProfilePopupOpen={isEditProfilePopupOpen}
 				isEditAvatarPopupOpen={isEditAvatarPopupOpen}
 				isAddPlacePopupOpen={isAddPlacePopupOpen}
+				onCardClick={handleCardClick}
+				closePopupImage={closeAllPopups}
+				selectedCard={selectedCard}
 			/>
 			<Footer />
 		</div>

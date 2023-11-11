@@ -2,12 +2,13 @@ import CloseIcon from '../images/Close-Icon.svg';
 import editButton from '../images/Edit-Button.svg';
 import editPerfil from '../images/editPerfil.svg';
 import addButton from '../images/Add-Button.svg';
-import profile from '../images/profile.jpg';
+// import profile from '../images/profile.jpg';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import Api from '../utils/api';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Card from './Card';
 
 function Main({
 	onEditPerfil,
@@ -17,24 +18,42 @@ function Main({
 	isEditAvatarPopupOpen,
 	isAddPlacePopupOpen,
 	closeAllPopups,
+	onCardClick,
+	selectedCard,
+	closePopupImage
+	
 }) {
 	// Aquí puedes manejar el estado de apertura/cierre de las ventanas emergentes
 	// const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
-	const [userName, setUserName] = useState();
+	const [userName, setUserName] = useState('');
 	const [userDescription, setUserDescription] = useState('');
 	const [userAvatar, setUserAvatar] = useState('');
-
+	const [cards, setCards] = useState([]);
 
 	useEffect(() => {
-		Api.getUserInfo('users/me')
-			.then((userData) => {
+		const fetchUserInfo = async () => {
+			try {
+				const userData = await Api.getUserInfo('users/me');
 				setUserName(userData.name);
 				setUserDescription(userData.about);
 				setUserAvatar(userData.avatar);
-			})
-			.catch((err) => console.log(err));
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		fetchUserInfo();
 	}, []);
-
+	useEffect(() => {
+		const fetchCards = async () => {
+			try {
+				const cards = await Api.getInitialCards('cards');
+				setCards(cards);
+			} catch (err) {
+				console.log(err);
+			}
+		};
+		fetchCards();
+	}, []);
 
 	return (
 		<main className="content">
@@ -177,7 +196,20 @@ function Main({
 			</section>
 
 			<section>
-				<ul className="elements"></ul>
+				<ul className="elements">
+					{cards.map((card) => (
+						<Card
+							key={card._id}
+							name={card.name}
+							link={card.link}
+							likes={card.likes.length}
+							id={card._id}
+							userId={card.owner._id}
+							onCardClick={onCardClick}
+							card={card}
+						/>
+					))}
+				</ul>
 
 				<template className="template-card">
 					<li className="card">
@@ -214,8 +246,7 @@ function Main({
 					</form>
 				</section>
 			</section>
-			<ImagePopup />
-			<ImagePopup />
+			<ImagePopup card={selectedCard} onClose={closePopupImage} />
 		</main>
 	);
 }

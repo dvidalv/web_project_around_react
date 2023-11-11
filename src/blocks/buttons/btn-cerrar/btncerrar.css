@@ -13,12 +13,33 @@
 .btnCerrar_overlay{
   width: 26px;
   height: 26px;
-  position: absolute;
-  top: -30px;
-  right: -30px;
+  /* position: absolute; */
+  top: 0px;
+  right: 0px;
+  position: relative;
 }
 
 .btnCerrar:hover {
   cursor: pointer;
   opacity: 0.6;
+}
+
+.overlay-image__container{
+  position: relative;
+}
+
+
+
+.popup__close{
+  top: -30px;
+  right: -30px;
+  width: 26px;
+  height: 26px;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  position: absolute;
+}
+.popup__image-container{
+  position: relative;
 }
