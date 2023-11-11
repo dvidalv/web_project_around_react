@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/%7Baround-react_es%7D/static/css/main.da09348c.css",
+    "main.js": "/%7Baround-react_es%7D/static/js/main.a50b8d33.js",
+    "static/js/787.bf20448d.chunk.js": "/%7Baround-react_es%7D/static/js/787.bf20448d.chunk.js",
+    "static/media/Inter-Medium.woff?v=3.19": "/%7Baround-react_es%7D/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff?v=3.19": "/%7Baround-react_es%7D/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/%7Baround-react_es%7D/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2?v=3.19": "/%7Baround-react_es%7D/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2?v=3.19": "/%7Baround-react_es%7D/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/%7Baround-react_es%7D/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/%7Baround-react_es%7D/static/media/logo.1ddb2bdc2582ce46650a16f0f59c5001.svg",
+    "static/media/me_gusta.svg": "/%7Baround-react_es%7D/static/media/me_gusta.1c6073e26a8c2ec2bd75.svg",
+    "index.html": "/%7Baround-react_es%7D/index.html",
+    "static/media/me_gusta_negro.svg": "/%7Baround-react_es%7D/static/media/me_gusta_negro.226461bd64622361ffb2.svg",
+    "static/media/Close-Icon.svg": "/%7Baround-react_es%7D/static/media/Close-Icon.0a2678e11f71ce96ede30ffa375143dd.svg",
+    "static/media/Add-Button.svg": "/%7Baround-react_es%7D/static/media/Add-Button.6f41966c71dd7895857fcaf57ea89b3f.svg",
+    "static/media/Edit-Button.svg": "/%7Baround-react_es%7D/static/media/Edit-Button.a1892ea72cb87c8fc3aa6fbcc02b8d17.svg",
+    "static/media/editPerfil.svg": "/%7Baround-react_es%7D/static/media/editPerfil.a086f758840ae814ecdece4799d2cf40.svg",
+    "main.da09348c.css.map": "/%7Baround-react_es%7D/static/css/main.da09348c.css.map",
+    "main.a50b8d33.js.map": "/%7Baround-react_es%7D/static/js/main.a50b8d33.js.map",
+    "787.bf20448d.chunk.js.map": "/%7Baround-react_es%7D/static/js/787.bf20448d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.da09348c.css",
+    "static/js/main.a50b8d33.js"
+  ]
+}
