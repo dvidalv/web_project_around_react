@@ -18,7 +18,7 @@
 	/*opacity: 0;
 	*/
 	animation: fadeOut 0.3s ease-in-out forwards;
-	-webkit-animation: FadeOut 0.3s ease-in-out forwards;
+	-webkit-animation: fadeOut 0.3s ease-in-out forwards;
 }
 
 .popup__formDeleteCard {

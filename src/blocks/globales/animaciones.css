@@ -32,7 +32,7 @@
     -o-transform: scale(0);
 }
 }
-@keyframes fadeOut {
+/* @keyframes fadeOut {
   0%{
     transform: opacity(1);
     -webkit-transform: opacity(1);
@@ -47,7 +47,7 @@
     -ms-transform: opacity(0);
     -o-transform: opacity(0);
 }
-}
+} */
 @keyframes megusta {
   0%{
     transform: scale(1);
@@ -74,18 +74,22 @@
  opacity: 0;
 }
 }
-@keyframes FadeIn {
+@keyframes fadeIn {
   0% {
     opacity: 0;
     transform: scale(0.9);
-  }
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
+}
   100% {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-@keyframes FadeOut {
+@keyframes fadeOut {
   0% {
     opacity: 1;
     transform: scale(1);
