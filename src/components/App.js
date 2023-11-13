@@ -1,6 +1,6 @@
+import Main from './Main';
 import Header from './Header';
 import Footer from './Footer';
-import Main from './Main';
 import { useState } from 'react';
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
 	};
 
 	return (
-		<div className="page">
+		<div className="page__content">
 			<Header />
 			<Main
 				onDeleteClick={handleDeleteClick}
