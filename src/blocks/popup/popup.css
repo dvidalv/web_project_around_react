@@ -16,7 +16,8 @@
 	overflow: hidden;
 	transition: opacity 0.3s ease-in-out;
 	/*opacity: 0;
-	*/animation: fadeout 0.3s ease-in-out forwards;
+	*/
+	animation: fadeout 0.3s ease-in-out forwards;
 	-webkit-animation: fadeout 0.3s ease-in-out forwards;
 }
 
@@ -46,10 +47,12 @@
 
 .popup_opened {
 	/*transition: opacity 0.3s ease-in-out;
-	*/display: flex;
+	*/
+	display: flex;
 	/*opacity: 1;
-	*/animation: fadeIn 0.3s ease-in-out forwards;
-	-webkit-animation: fadeIn 0.3s ease-in-out forwards;
+	*/
+	animation: fadein 0.3s ease-in-out forwards;
+	-webkit-animation: fadein 0.3s ease-in-out forwards;
 }
 
 .invisible {
