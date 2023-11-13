@@ -8,12 +8,11 @@ function App() {
 	const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
 	const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
 	const [selectedCard, setSelectedCard] = useState(null);
-	const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false)
-
+	const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
 
 	const handleDeleteClick = () => {
 		setIsDeletePopupOpen(!isDeletePopupOpen);
-	}
+	};
 
 	const handleCardClick = (card) => {
 		document.body.style.overflow = 'hidden';
@@ -22,7 +21,6 @@ function App() {
 
 	const handleEditAvatarClick = () => {
 		setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
-
 	};
 
 	const handleEditPerfilClick = () => {
