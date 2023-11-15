@@ -1,61 +1,61 @@
 const token = '9d080c9f-32ec-43d7-9e8d-be1fdad6fe1b';
 
 class Api {
-  constructor() {
-    this.groupId = 'web_es_09';
-    this._token = token;
-    this._url = `https://around.nomoreparties.co/v1/${this.groupId}/`;
-  }
-  async fetchData(url, method, data) {
-    try {
-      const result = await fetch(`${url}`, {
-        method,
-        headers: {
-          authorization: this._token,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      });
+	constructor() {
+		this.groupId = 'web_es_09';
+		this._token = token;
+		this._url = `https://around.nomoreparties.co/v1/${this.groupId}/`;
+	}
+	async fetchData(url, method, data) {
+		try {
+			const result = await fetch(`${url}`, {
+				method,
+				headers: {
+					authorization: this._token,
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
 
-      if (result.ok) {
-        return await result.json();
-      }
+			if (result.ok) {
+				return await result.json();
+			}
 
-      return await Promise.reject(`Error: ${result.status}`);
-    } catch (error) {
-      throw error;
-    }
-  }
+			return await Promise.reject(`Error: ${result.status}`);
+		} catch (error) {
+			throw error;
+		}
+	}
 
-  async getInitialCards(resouce) {
-    return await this.fetchData(`${this._url}${resouce}`, 'GET');
-  }
+	async getInitialCards(resource) {
+		return await this.fetchData(`${this._url}${resource}`, 'GET');
+	}
 
-  async getUserInfo(resouce) {
-    return await this.fetchData(`${this._url}${resouce}`, 'GET');
-  }
-  async getUserAvatar(resouce) {
-    return await this.fetchData(`${this._url}${resouce}`);
-  }
+	async getUserInfo(resource) {
+		return await this.fetchData(`${this._url}${resource}`, 'GET');
+	}
+	async getUserAvatar(resource) {
+		return await this.fetchData(`${this._url}${resource}`);
+	}
 
-  async patchUserInfo(resouce, data) {
-    return await this.fetchData(`${this._url}${resouce}`, 'PATCH', data);
-  }
-  async addCard(resouce, data) {
-    return await this.fetchData(`${this._url}${resouce}`, 'POST', data);
-  }
+	async patchUserInfo(resource, data) {
+		return await this.fetchData(`${this._url}${resource}`, 'PATCH', data);
+	}
+	async addCard(resource, data) {
+		return await this.fetchData(`${this._url}${resource}`, 'POST', data);
+	}
 
-  async deleteCard(resouce, card_Id) {
-    return await this.fetchData(`${this._url}${resouce}`, 'DELETE');
-  }
+	async deleteCard(resource, card_Id) {
+		return await this.fetchData(`${this._url}${resource}`, 'DELETE');
+	}
 
-  async likeCard(resouce, card_Id) {
-    return await this.fetchData(`${this._url}${resouce}/${card_Id}`, 'PUT');
-  }
+	async likeCard(resource, card_Id) {
+		return await this.fetchData(`${this._url}${resource}/${card_Id}`, 'PUT');
+	}
 
-  async dislikeCard(resouce, card_Id) {
-    return await this.fetchData(`${this._url}${resouce}/${card_Id}`, 'DELETE');
-  }
+	async dislikeCard(resource, card_Id) {
+		return await this.fetchData(`${this._url}${resource}/${card_Id}`, 'DELETE');
+	}
 }
 const api = new Api();
 

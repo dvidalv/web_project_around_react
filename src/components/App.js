@@ -23,7 +23,7 @@ function App() {
 		setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
 	};
 
-	const handleEditPerfilClick = () => {
+	const handleProfileClick = () => {
 		setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
 	};
 
@@ -46,7 +46,7 @@ function App() {
 			<Main
 				onDeleteClick={handleDeleteClick}
 				closeAllPopups={closeAllPopups}
-				onEditPerfil={handleEditPerfilClick}
+				onEditPerfil={handleProfileClick}
 				onEditAvatar={handleEditAvatarClick}
 				onAddPlace={handleAddPlaceClick}
 				isEditProfilePopupOpen={isEditProfilePopupOpen}
