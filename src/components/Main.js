@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import Card from './Card';
 import { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import api from '../utils/api';
 
 function Main({
 	onEditPerfil,
@@ -28,18 +29,18 @@ function Main({
 	const [cards, setCards] = useState([]);
 	const currentUser = useContext(CurrentUserContext);
 
-  async function handleCardLike(card) {
-    // Verifica una vez más si a esta tarjeta ya le han dado like
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    console.log(isLiked);
+	async function handleCardLike(card) {
+		// Verifica una vez más si a esta tarjeta ya le han dado like
+		const isLiked = card.likes.some((i) => i._id === currentUser._id);
+		console.log(isLiked);
 
-    try {
-      const newCard = await Api.changeLikeCardStatus(card._id, !isLiked);
-      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-    } catch (error) {
-      console.log(error);
-    }
-  }
+		try {
+			const newCard = await Api.changeLikeCardStatus(card._id, !isLiked);
+			setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+		} catch (error) {
+			console.log(error);
+		}
+	}
 
 	useEffect(() => {
 		const fetchCards = async () => {
@@ -52,6 +53,15 @@ function Main({
 		};
 		fetchCards();
 	}, []);
+
+	async function handleCardDelete(card) {
+		try {
+			await api.deleteCard('cards', card._id);
+			setCards(cards => cards.filter((c) => c._id !== card._id));
+		} catch (err) {
+			console.log(err);
+		}
+	}
 
 	return (
 		<main className="content">
@@ -201,7 +211,9 @@ function Main({
 							onCardClick={onCardClick}
 							card={card}
 							onDeleteClick={onDeleteClick}
-              onCardLike={handleCardLike}
+							onCardLike={handleCardLike}
+							isDeletePopupOpen={isDeletePopupOpen}
+							onCardDelete={handleCardDelete}
 						/>
 					))}
 				</ul>

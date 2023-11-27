@@ -46,7 +46,7 @@ class Api {
 	}
 
 	async deleteCard(resource, card_Id) {
-		return await this.fetchData(`${this._url}${resource}`, 'DELETE');
+		return await this.fetchData(`${this._url}${resource}/${card_Id}`, 'DELETE');
 	}
 
 

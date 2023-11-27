@@ -1,7 +1,7 @@
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { useContext } from 'react';
 
-function Card({ onCardClick, card, onDeleteClick, onCardLike }) {
+function Card({ onCardClick, card, onDeleteClick, onCardLike, onCardDelete }) {
 	const currentUser = useContext(CurrentUserContext);
 
 	// Verificando si el usuario actual es el propietario de la tarjeta actual
@@ -13,6 +13,10 @@ function Card({ onCardClick, card, onDeleteClick, onCardLike }) {
 	function handleLikeClick(card) {
 		onCardLike(card);
 	}
+	function handleDeleteClick() {
+		onCardDelete(card);
+	}
+
 	return (
 		<li className="card">
 			<div className="card__image-container">
@@ -38,7 +42,7 @@ function Card({ onCardClick, card, onDeleteClick, onCardLike }) {
 				</span>
 			</div>
 			<i
-				onClick={onDeleteClick}
+				onClick={handleDeleteClick}
 				className={`fa-solid fa-trash ${isOwn ? 'card__delete-button' : ''}`}
 			></i>
 		</li>
