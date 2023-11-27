@@ -28,6 +28,19 @@ function Main({
 	const [cards, setCards] = useState([]);
 	const currentUser = useContext(CurrentUserContext);
 
+  async function handleCardLike(card) {
+    // Verifica una vez más si a esta tarjeta ya le han dado like
+    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    console.log(isLiked);
+
+    try {
+      const newCard = await Api.changeLikeCardStatus(card._id, !isLiked);
+      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 	useEffect(() => {
 		const fetchCards = async () => {
 			try {
@@ -188,6 +201,7 @@ function Main({
 							onCardClick={onCardClick}
 							card={card}
 							onDeleteClick={onDeleteClick}
+              onCardLike={handleCardLike}
 						/>
 					))}
 				</ul>

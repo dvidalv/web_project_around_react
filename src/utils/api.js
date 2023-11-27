@@ -49,13 +49,15 @@ class Api {
 		return await this.fetchData(`${this._url}${resource}`, 'DELETE');
 	}
 
-	async likeCard(resource, card_Id) {
-		return await this.fetchData(`${this._url}${resource}/${card_Id}`, 'PUT');
-	}
+
 
 	async dislikeCard(resource, card_Id) {
 		return await this.fetchData(`${this._url}${resource}/${card_Id}`, 'DELETE');
 	}
+	async changeLikeCardStatus(id, isLike){
+		return await this.fetchData(`${this._url}cards/likes/${id}`, isLike? 'PUT' : 'DELETE');
+	}
+
 }
 const api = new Api();
 
