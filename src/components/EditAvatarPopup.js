@@ -7,7 +7,6 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
 		e.preventDefault();
 
 		onUpdateAvatar({
-			// avatar: /* El valor de la entrada que obtuvimos utilizando la ref */,
 			avatar: inputRef.current.value,
 		});
 		e.target.reset();

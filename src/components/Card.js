@@ -9,12 +9,12 @@ function Card({ onCardClick, card, onDeleteClick, onCardLike }) {
 
 	// Verifica si el usuario actual le dio "like" a la tarjeta
 	const isLiked = card.likes.some((i) => i._id === currentUser._id);
-	// console.log(isLiked)
+
 	function handleLikeClick(card) {
 		onCardLike(card);
 	}
 	function handleDeleteClick() {
-		// onCardDelete(card);
+
 		onDeleteClick(card);
 	}
 

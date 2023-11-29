@@ -1,12 +1,9 @@
 import PopupWithForm from './PopupWithForm';
-// import CloseIcon from '../images/Close-Icon.svg';
 import React, { useState, useEffect, useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 	const { currentUser } = useContext(CurrentUserContext);
-	// console.log(currentUser);
-
 	const [name, setName] = useState('');
 	const [description, setDescription] = useState('');
 

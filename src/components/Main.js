@@ -80,7 +80,6 @@ function Main({
 							onDeleteClick={onDeleteClick}
 							onCardLike={onCardLike}
 							isDeletePopupOpen={isDeletePopupOpen}
-							// onCardDelete={onCardDelete}
 						/>
 					))}
 				</ul>
