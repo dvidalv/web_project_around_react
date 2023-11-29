@@ -1,8 +1,8 @@
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { useContext } from 'react';
 
-function Card({ onCardClick, card, onDeleteClick, onCardLike, onCardDelete }) {
-	const currentUser = useContext(CurrentUserContext);
+function Card({ onCardClick, card, onDeleteClick, onCardLike }) {
+	const { currentUser } = useContext(CurrentUserContext);
 
 	// Verificando si el usuario actual es el propietario de la tarjeta actual
 	const isOwn = card.owner._id === currentUser._id;
@@ -14,7 +14,8 @@ function Card({ onCardClick, card, onDeleteClick, onCardLike, onCardDelete }) {
 		onCardLike(card);
 	}
 	function handleDeleteClick() {
-		onCardDelete(card);
+		// onCardDelete(card);
+		onDeleteClick(card);
 	}
 
 	return (
@@ -31,7 +32,7 @@ function Card({ onCardClick, card, onDeleteClick, onCardLike, onCardDelete }) {
 				<div className="card__info">
 					<p className="card__title">{card.name}</p>
 					<div
-						className={`card_dislike ${isLiked? 'card_like' : ''}`}
+						className={`card_dislike ${isLiked ? 'card_like' : ''}`}
 						onClick={() => {
 							handleLikeClick(card);
 						}}

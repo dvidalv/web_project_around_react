@@ -1,10 +1,15 @@
 import CloseIcon from '../images/Close-Icon.svg';
-function PopupWithForm({ name, title, children, isOpen, onClose }) {
+
+function PopupWithForm({ name, title, children, isOpen, onClose, onSubmit }) {
 	return (
 		<section
 			className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : ''}`}
 		>
-			<form className={`popup__form popup__form-update-${name}`} noValidate>
+			<form
+				className={`popup__form popup__form-update-${name}`}
+				noValidate
+				onSubmit={onSubmit}
+			>
 				<h2 className="popup__title">{title}</h2>
 				<img
 					className="btnCerrar popup__button-cerrar-update-perfil"

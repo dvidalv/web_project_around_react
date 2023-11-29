@@ -31,33 +31,36 @@ class Api {
 		return await this.fetchData(`${this._url}${resource}`, 'GET');
 	}
 
-	async getUserInfo(resource) {
-		return await this.fetchData(`${this._url}${resource}`, 'GET');
+	async getUserInfo() {
+		return await this.fetchData(`${this._url}users/me`, 'GET');
 	}
 	async getUserAvatar(resource) {
 		return await this.fetchData(`${this._url}${resource}`);
 	}
-
-	async patchUserInfo(resource, data) {
-		return await this.fetchData(`${this._url}${resource}`, 'PATCH', data);
+	async setUserAvatar(data) {
+		return await this.fetchData(`${this._url}users/me/avatar`, 'PATCH', data);
 	}
-	async addCard(resource, data) {
-		return await this.fetchData(`${this._url}${resource}`, 'POST', data);
+
+	async patchUserInfo(data) {
+		return await this.fetchData(`${this._url}users/me`, 'PATCH', data);
+	}
+	async addCard(data) {
+		return await this.fetchData(`${this._url}cards`, 'POST', data);
 	}
 
 	async deleteCard(resource, card_Id) {
 		return await this.fetchData(`${this._url}${resource}/${card_Id}`, 'DELETE');
 	}
 
-
-
 	async dislikeCard(resource, card_Id) {
 		return await this.fetchData(`${this._url}${resource}/${card_Id}`, 'DELETE');
 	}
-	async changeLikeCardStatus(id, isLike){
-		return await this.fetchData(`${this._url}cards/likes/${id}`, isLike? 'PUT' : 'DELETE');
+	async changeLikeCardStatus(id, isLike) {
+		return await this.fetchData(
+			`${this._url}cards/likes/${id}`,
+			isLike ? 'PUT' : 'DELETE'
+		);
 	}
-
 }
 const api = new Api();
 
